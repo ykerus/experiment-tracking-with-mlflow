@@ -1,4 +1,4 @@
-# Experiment Tracking with MLflow 📈
+# Experiment Tracking with MLflow 📈 
 
 Interactive guide to experiment tracking with MLflow.
 
