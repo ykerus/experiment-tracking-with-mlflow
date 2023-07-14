@@ -119,9 +119,9 @@ az container create --name turbine-app --resource-group mlops-workshop --image <
 - You are free to change the specific names you to what you've used throughout the workshop, but make sure to change `<your-dockerhub-image-location>` (e.g. `<your-dockerhub-username>/mlops-workshop-image:latest`) and `turbine-app-<your-name>`.
 
 
-4. If you want to update your container instance with a new image, you can run:
+4. If you want to update your container instance with a new image with the same tag, you can run:
 ```bash
-az container update --name turbine-app --resource-group mlops-worshop --image <your-dockerhub-image-location>
+az container restart --name turbine-app --resource-group mlops-worshop
 ``` 
  
 1. Your app is running 🚀 Now, let your neighbour try to access your app!
@@ -230,16 +230,24 @@ Add New Repository Secret
 ![Alt text](image-2.png)
 
 Finding secrets for Azure:
+
+https://docs.lacework.net/onboarding/gather-the-required-azure-client-id-tenant-id-and-client-secret#:~:text=In%20the%20left%20panel%2C%20select,values%20into%20a%20temporary%20file.
+
 - Go to portal (portal.azure.com)
 - Navigate to Active Directory from the top menu
 - Select App Registrations from the left menu and create a new app registration if there is none
 ![Alt text](images/image-44.png)
-- Once created, you can copy the tenant ID. Register this as a secret in your GitHub repository under the name `AZURE_TENANT_ID`.
+- Copy ClientID and TenantID and register these as the secrets `AZURE_CLIENT_ID` and `AZURE_TENANT_ID` in your GitHub repository.
 ![Alt text](images/image-41.png)
-- Create secret in your app registration
+- Navigate to Certificates & Secrets from the left menu and create a new client secret. Copy the value and register this as the secret `AZURE_CLIENT_SECRET` in your GitHub repository.
 ![Alt text](images/image-42.png)
-- Once created, you can copy the client ID and value. Register these as the secrets `AZURE_CLIENT_ID` and `AZURE_CLIENT_SECRET` in your GitHub repository.
+- Give your client admin permissions:
+![Alt text](image.png)
+Or app role
+![Alt text](image-1.png)
+
 - Finally, you can find the subscription ID [here](https://portal.azure.com/#view/Microsoft_Azure_Billing/SubscriptionsBlade). Register this as the secret `AZURE_SUBSCRIPTION_ID` in your GitHub repository.
+
 
 Finding secrets for GCP:
 - Go to the [GCP console](https://console.cloud.google.com/)
@@ -255,3 +263,5 @@ Tada!
 ![Alt text](iamges/image-43.png)
 
 test
+
+hi
